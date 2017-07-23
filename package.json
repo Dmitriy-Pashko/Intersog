@@ -17,8 +17,8 @@
     "url": "git://github.com/KarlDoyle/angular-es6-webpack-starter.git"
   },
   "dependencies": {
-    "angular": "^1.5.3",
-    "angular-ui-router": "1.0.0-beta.1"
+    "angular": "^1.6",
+    "angular-ui-router": "1.0.5"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.1",
@@ -36,8 +36,6 @@
     "html-webpack-plugin": "^2.15.0",
     "http-server": "^0.9.0",
     "json-loader": "^0.5.4",
-    "ng-annotate-loader": "0.1.1",
-    "ng-annotate-webpack-plugin": "^0.1.2",
     "ng-cache-loader": "0.0.18",
     "node-sass": "^4.1.1",
     "protractor": "^4.0.14",

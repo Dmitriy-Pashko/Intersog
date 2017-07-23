@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="app">
+<html ng-app="app" ng-strict-di>
   <head>
     <meta charset="utf-8">
     <title><%= htmlWebpackPlugin.options.title %></title>
@@ -10,20 +10,7 @@
     <meta name="theme-color" content="#EE3268">
     <link rel="manifest" href="manifest.json">
   </head>
-  <body> <!-- ng-strict-di -->
+  <body>
     <div id="app-wrapper" ui-view></div>
   </body>
-  <script type="text/javascript">
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('service-worker.js').then(function(registration) {
-          // Registration was successful
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }).catch(function(err) {
-          // registration failed :(
-          console.log('ServiceWorker registration failed: ', err);
-        });
-      });
-    }
-  </script>
 </html>

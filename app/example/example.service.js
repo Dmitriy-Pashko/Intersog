@@ -5,5 +5,5 @@ function exampleService($state) {
   }
 
 }
-
+/* @ngInject */
 export default exampleService;

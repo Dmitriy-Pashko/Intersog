@@ -33,7 +33,7 @@ module.exports = new WebpackConfig().merge({
         loader: 'ng-cache?prefix=[dir]/[dir]'
     }, {
         test: /\.js$/,
-        loader: 'babel?presets[]=es2015',
+        loader: 'babel?presets[]=es2015&plugins[]=angularjs-annotate',
         exclude: /node_modules/
     }]
   },
@@ -47,11 +47,6 @@ module.exports = new WebpackConfig().merge({
       title: 'Starter Theme',
       template: 'index.ejs',
       inject: 'body'
-    }),
-    new CopyWebpackPlugin([
-      {from: 'offline.html', to: 'offline.html'},
-      {from: 'service-worker.js', to: 'service-worker.js'},
-      {from: 'manifest.json', to: 'manifest.json'}
-    ])
+    })
   ]
 })

@@ -1,5 +1,6 @@
 import exampleHtml from './example.html';
 
+/* @ngInject */
 let exampleComponent = {
   template: exampleHtml,
   controllerAs: 'example',
@@ -9,5 +10,4 @@ let exampleComponent = {
   }
 
 }
-
 export default exampleComponent;
