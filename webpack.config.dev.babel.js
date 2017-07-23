@@ -4,7 +4,8 @@ import WebpackConfig from 'webpack-config';
 
 module.exports = new WebpackConfig().extend('./webpack.config.common.babel.js').merge({
   output: {
-    pathinfo: true
+    pathinfo: true,
+    filename: "[name].entry.js"
   },
   debug: true,
   devtool: '#eval',
