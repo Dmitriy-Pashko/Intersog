@@ -1,0 +1,140 @@
+<div class="color1">
+  <div class="flexible">
+      <md-toolbar class="away2" style="background-color:#f3f0f0f5">
+        <div class="md-toolbar-tools">
+          <h2 md-truncate flex style="color:black">{{cmp.campaign.name}}</h2>
+        </div>
+      </md-toolbar>
+    </div>
+    <div class="color away2">
+      <div class="lmgn">
+          <md-button class="md-raised mgn" ng-click="cmp.photoFilter('Instagram')">Instagram</md-button>
+          <md-button class="md-raised mgn" ng-click="cmp.photoFilter('Youtube')">Youtube</md-button>
+          <md-button class="md-raised mgn" ng-click="cmp.photoFilter('Facebook')">Facebook</md-button>
+          <md-button class="md-raised mgn" ng-click="cmp.photoFilter('Twitter')">Twitter</md-button>
+      </div>
+      <div ng-cloak>
+          <md-content>
+            <md-tabs md-dynamic-height md-border-bottom class="color">
+              <md-tab label="pending">
+                <md-content class="md-padding">
+                  <div style="display:flex">
+                    <div style="width:95%">
+                      <md-chips
+                        ng-model="cmp.tags"
+                        readonly="ctrl.readonly"
+                        placeholder="Enter a tag"
+                        delete-button-label="Remove Tag"
+                        delete-hint="Press delete to remove tag"
+                        secondary-placeholder="+Tag">
+                      </md-chips>
+                    </div>
+                    <div style="width:10%">
+                      <md-button class="md-primary md-raised" ng-click="cmp.captionFilter(cmp.tags)">Filter</md-button>
+                    </div>
+                  </div>
+                  <div style="width:25%" ng-repeat="camp in cmp.campaign.media"  class="block">
+                    <md-card style="background-color:#f3f0f0f5">
+                      <md-card-header class="lborder">
+                        <md-card-header-text>
+                          <span class="md-title">@{{camp.author_username}}</span>
+                          <span class="md-subhead">{{camp.social_network}}</span>
+                        </md-card-header-text>
+                      </md-card-header>
+                      <md-card-content class="picpadding">
+                        <div class="caption-div">
+                          <img src="{{camp.pic}}" alt="" class="fullpic">
+                          <h4 class="caption">{{camp.caption.toUpperCase()}}</h4>
+                        </div>
+                        <div layout="raw">
+                          <div layout="column" class="mpdn" flex=50>
+                              <span class="medium-font" >LIKES</span>
+                              <p class="mgn large-font">{{camp.likes_number}}</p>
+                          </div>
+                          <div layout="column" class="mpdn" flex=50>
+                              <span class="medium-font">COMMENTS</span>
+                              <p class="mgn large-font">{{camp.comments_number}}</p>
+                          </div>
+                        </div>
+                      </md-card-content>
+                      <md-card-footer class="footer-line-sm">
+                          <md-card-actions>
+                            <md-button ng-click="cmp.otherTabPost('app', camp.id)">Approve</md-button>
+                            <md-button ng-click="cmp.otherTabPost('rej', camp.id)">Reject</md-button>
+                          </md-card-actions>
+                      </md-card-footer>
+                    </md-card>
+                    </div>
+                </md-content>
+              </md-tab>
+              <md-tab label="approved">
+                <md-content class="md-padding">
+                    <div style="width:25%" ng-repeat="app in cmp.approved"  class="block">
+                        <md-card style="background-color:#f3f0f0f5">
+                            <md-card-header class="lborder">
+                              <md-card-header-text>
+                                <span class="md-title">@{{app.author_username}}</span>
+                                <span class="md-subhead">{{app.social_network}}</span>
+                              </md-card-header-text>
+                            </md-card-header>
+                            <md-card-content class="picpadding">
+                              <img src="{{app.pic}}" alt="" class="fullpic">
+                              <div layout="raw">
+                                <div layout="column" class="mpdn" flex=50>
+                                    <span class="medium-font" >LIKES</span>
+                                    <p class="mgn large-font">{{app.likes_number}}</p>
+                                </div>
+                                <div layout="column" class="mpdn" flex=50>
+                                    <span class="medium-font">COMMENTS</span>
+                                    <p class="mgn large-font">{{app.comments_number}}</p>
+                                </div>
+                              </div>
+                            </md-card-content>
+                            <md-card-footer class="footer-line-sm">
+                                <md-card-actions>
+                                  <md-button ng-click="cmp.changeMind('rej', app.id)">Reject</md-button>
+                                </md-card-actions>
+                            </md-card-footer>
+                          </md-card>
+                      </div>
+                </md-content>
+              </md-tab>
+              <md-tab label="rejected">
+                <md-content class="md-padding">
+                    <div style="width:25%" ng-repeat="rej in cmp.rejected"  class="block">
+                        <md-card style="background-color:#f3f0f0f5">
+                            <md-card-header class="lborder">
+                              <md-card-header-text>
+                                <span class="md-title">@{{rej.author_username}}</span>
+                                <span class="md-subhead">{{rej.social_network}}</span>
+                              </md-card-header-text>
+                            </md-card-header>
+                            <md-card-content class="picpadding">
+                              <img src="{{rej.pic}}" alt="" class="fullpic">
+                              <div layout="raw">
+                                <div layout="column" class="mpdn" flex=50>
+                                    <span class="medium-font" >LIKES</span>
+                                    <p class="mgn large-font">{{rej.likes_number}}</p>
+                                </div>
+                                <div layout="column" class="mpdn" flex=50>
+                                    <span class="medium-font">COMMENTS</span>
+                                    <p class="mgn large-font">{{rej.comments_number}}</p>
+                                </div>
+                              </div>
+                            </md-card-content>
+                            <md-card-footer class="footer-line-sm">
+                                <md-card-actions>
+                                  <md-button ng-click="cmp.changeMind('app', rej.id)">Approve</md-button>
+                                </md-card-actions>
+                            </md-card-footer>
+                          </md-card>
+                      </div>
+                </md-content>
+              </md-tab>
+            </md-tabs>
+          </md-content>
+        </div>
+    </div>
+</div>
+
+
