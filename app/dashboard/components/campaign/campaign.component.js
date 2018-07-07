@@ -5,7 +5,7 @@ let campaignComponent = {
   bindings: { campaign: '<' },
   template: campaignHtml,
   controllerAs: 'cmp',
-  controller:function($log) {
+  controller:function($log, $filter) {
     let self = this;
     self.tags = [];
     self.approved = [];
@@ -38,19 +38,10 @@ let campaignComponent = {
       }
     }
     self.captionFilter = function(arr) {
-      $log.log(arr);
       angular.forEach(arr, function(item) {
-        let res = self.campaign.media.map((cap)=>cap.caption).filter((el)=> {
-          if (el.includes(item)) {
-            return el;
-          }
-        });
-        $log.log(res);
+        self.campaign.media = $filter('filter')(self.campaign.media, item.trim());
       })
     }
-    // It is not working. I stopped here because I made half of it and it seems alredy
-    //  comlicated and I cannot think clearly to finish it but I promise to send code
-    // right now so I apologise for giving up to early :)
   }
 }
 

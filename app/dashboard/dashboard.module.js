@@ -1,7 +1,7 @@
 import angular from 'angular';
 import routing from './dashboard.route';
-import dashboardComponent from './dashboard.component';
-import campaignComponent from './campaign.component';
+import dashboardComponent from './components/dashboard/dashboard.component';
+import campaignComponent from './components/campaign/campaign.component';
 import service from './dashboard.service';
 /* @ngInject */
 angular
